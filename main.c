@@ -12,14 +12,7 @@ int swap(int x, int y){
     y = temp;
 };
 
-int binarySearch(int arr[], int low, int high, int index) 
-{
 
-    int middle = (low+high) / 2;
-
-    printf(middle);
-
-};
 int main(){
 
     int n;
