@@ -2,123 +2,201 @@
 #include <string.h>
 #include <stdlib.h>
 
+int binarySearch(){
 
+    printf("hi");
 
-// this function to swap the values
-int swap(int x, int y){
+    return 0;
+}
 
-    int temp = x;
-    x = y;
-    y = temp;
-};
 
 
 int main(){
 
-    int n;
+    int chiox; 
+
+    printf("Chose the way of sorting you want : \n 1 : Bubble sort \n 2 : Selection sort \n 3 : insertion sort \n the mode you want : ");
+    scanf("%d", &chiox);
+
+    if(chiox != 1 && chiox != 2 && chiox != 3){
+
+        printf("Stop joking");
+
+    }else if(chiox == 1) { // if the user takes 
+
+        int size;
     
 
-    printf("Please enter the number of elements :");
-    scanf("%d", &n);
+        printf("Please enter the number of elements :");
+        scanf("%d", &size);
 
-    int memo[n];
+        int *memo;
 
-    // allocate memorey
+        // allocate memorey
     
 
-    memo[n] = (int*)malloc(n * sizeof(int));
+        memo = (int*)malloc(size * sizeof(int));
 
 
-    
-    // Asking the user to type each note
-    for(int i = 0; i < n; i++){
+        // Asking the user to type each note
 
-        printf("Enter the notes  %d: ", i+1);
-        scanf("%d", &memo[i]);
+        for(int i = 0; i < size; i++){
+
+            printf("Enter the notes  %d: ", i);
+            scanf("%d", &memo[i]);
             
-    };
+        }
 
-    
+        // bubble sort
 
-    int size = sizeof(memo)/sizeof(memo[0]);
+        for(int i = 0; i < size; i++) {
 
-    // bubble sort
-
-    for(int i = 0; i < size-1; i++) {
             
-        for(int k = 0; k < size-1; k++){
+            for(int k = 0; k < size-i-1; k++){
 
-            if(memo[k] <= memo[k+1]){ // if the first element smaller than the second swap;
+                if(memo[k] < memo[k+1]){ // if the first element smaller than the second swap;
 
-            int temp = memo[k];
-            memo[k] = memo[k+1];
-            memo[k+1] = temp;
+                    int temp = memo[k];
+                    memo[k] = memo[k+1];
+                    memo[k+1] = temp;
 
-        };
-    };
-};
-
-
-    // a loop to show the sorted version to the user 
-
-    for(int j = 0; j < size; j++){
-        printf("bubble sort : %d\n" , memo[j]);
-    }; 
-
-    // selection sort
-
-    for(int i = 0; i < size - 1; i++){
-
-        int max = memo[0];
-
-        if(max < memo[i]){
-            max = memo[i];
-        };
-
-    };
-
-    // a loop to show the sorted version to the user 
-
-    for(int j = 0; j < size; j++){
-        printf("selection sort : %d\n" , memo[j]);
-    }; 
-
+                } // semicolon of the if
+            } // semicolon of the for
+        }
     
+    // loop over the sorted array and print it 
+        for(int j = 0; j < size; j++){
+            printf("bubble sort : %d\n" , memo[j]);
+        }
+
+    }else if(chiox == 2){
+
+        int size;
     
-    // insertion sort
 
-    for(int i = 0; i <= size; i++){
+        printf("Please enter the number of elements :");
+        scanf("%d", &size);
 
-        int max = memo[i];
+        int *memo;
 
-        for(int j = i+1; j <= size; j++){
-
-            if(max < memo[j]){ // if there  is a number biggre than our max value change the value to it
-                max = memo[j];
-            };
-
-            if(max != i){ // if the index changed swap the values 
-
-                swap(memo[max] , memo[j]);
-
-            };
-
-        };
-
-    };
-
-    // a loop to show the sorted version to the user 
-    for(int j = 0; j < size; j++){
-        printf("insertion sort : %d\n" , memo[j]);
-    }; 
-
-
-   
+        // allocate memorey
     
-};
 
+        memo = (int*)malloc(size * sizeof(int));
+
+        // Asking the user to type each note
+
+        for(int i = 0; i < size; i++){
+
+            printf("Enter the notes  %d: ", i);
+            scanf("%d", &memo[i]);
+            
+        }
+
+        // selection sort
+
+        for(int i = 0; i < size ; i++){
+
+            int min = i;
+
+            for(int j = i+1; j <= size - 1; j++){
+
+                if(memo[j] < memo[min]){
+
+                    min = j;
+
+                }
+
+                if(min != i){
+
+                    int temp = memo[i];
+                    memo[i] = memo[j];
+                    memo[j] = temp;
+
+                }
+
+            }
+
+        }
+
+        // a loop to show the sorted version to the user 
+
+        for(int j = 0; j < size; j++){
+            printf("selection sort : %d\n" , memo[j]);
+        } 
+
+    }else if(chiox == 3){  // third mode
+
+        int size;
+    
+
+        printf("Please enter the number of elements :");
+        scanf("%d", &size);
+
+        int *memo;
+
+        // allocate memorey
+    
+
+        memo = (int*)malloc(size * sizeof(int));
+
+        // Asking the user to type each note
+
+        for(int i = 0; i < size; i++){
+
+            printf("Enter the notes  %d: ", i);
+            scanf("%d", &memo[i]);
+            
+        }
+        // insertion sort
+
+        for(int i = 0; i < size; i++){
+
+            int max = i;
+
+            for(int j = i+1; j < size; j++){
+
+                if(memo[max] < memo[j]){ // if there  is a number biggre than our max value change the value to it
+
+
+                     // if the index changed swap the values 
+
+                        int temp = memo[i];
+                        memo[i] = memo[j];
+                        memo[j] = temp;
+
+                    
+                }
+            }
+        }
+
+        // a loop to show the sorted version to the user 
+        for(int j = 0; j < size; j++){
+            printf("insertion sort : %d\n" , memo[j]);
+        }
+    }
+} // the end of the programm
 
 /*
+
+
+
+    
+    
+    
+
+    int x;
+
+    // Asking the user type the value he wants to know it's index
+    printf("Please type a value ");
+    scanf("%d", &x);
+
+    
+
+}
+
+
+
 
 #include <stdio.h>
 #include <string.h>
