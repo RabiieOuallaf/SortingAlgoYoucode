@@ -1,11 +1,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+
+
+// this function to swap the values
 int swap(int x, int y){
 
     int temp = x;
     x = y;
     y = temp;
+};
+
+int binarySearch(int arr[], int low, int high, int index) 
+{
+
+    int middle = (low+high) / 2;
+
+    printf(middle);
+
 };
 int main(){
 
@@ -42,7 +55,7 @@ int main(){
             
         for(int k = 0; k < size-1; k++){
 
-            if(memo[k] <= memo[k+1]){
+            if(memo[k] <= memo[k+1]){ // if the first element smaller than the second swap;
 
             int temp = memo[k];
             memo[k] = memo[k+1];
@@ -52,6 +65,8 @@ int main(){
     };
 };
 
+
+    // a loop to show the sorted version to the user 
 
     for(int j = 0; j < size; j++){
         printf("bubble sort : %d\n" , memo[j]);
@@ -68,6 +83,8 @@ int main(){
         };
 
     };
+
+    // a loop to show the sorted version to the user 
 
     for(int j = 0; j < size; j++){
         printf("selection sort : %d\n" , memo[j]);
@@ -96,17 +113,13 @@ int main(){
         };
 
     };
+
+    // a loop to show the sorted version to the user 
     for(int j = 0; j < size; j++){
         printf("insertion sort : %d\n" , memo[j]);
     }; 
 
-// Well , this part of the project is under building :)
 
-    int index;
-
-    printf("What is the note : ");
-    scanf("%d", &index);
-    printf("The element you chosen is : %d", index);
    
     
 };
