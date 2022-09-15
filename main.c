@@ -9,6 +9,15 @@ int binarySearch(){
     return 0;
 }
 
+int swap(int x , int y)
+{
+
+    int temp = x;
+    x = y;
+    y = temp;
+
+}
+
 
 
 int main(){
@@ -36,7 +45,7 @@ int main(){
     
 
         memo = (int*)malloc(size * sizeof(int));
-
+        
 
         // Asking the user to type each note
 
@@ -56,9 +65,14 @@ int main(){
 
                 if(memo[k] < memo[k+1]){ // if the first element smaller than the second swap;
 
+                /*
+
                     int temp = memo[k];
                     memo[k] = memo[k+1];
                     memo[k+1] = temp;
+
+                */
+                    swap(memo[k] , memo[k+1]);
 
                 } // semicolon of the if
             } // semicolon of the for
