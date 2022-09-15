@@ -2,21 +2,42 @@
 #include <string.h>
 #include <stdlib.h>
 
-int binarySearch(){
+// searching algo 
 
-    printf("hi");
+int binarySearch(int arr[], int low, int high, int n){
+
+    
+
+    int middle = (high + low) / 2;
+
+
+    if(n == arr[middle]) {
+
+        return printf("the index of the element you want is : %d" , middle);
+
+    }else if (n <= arr[middle]) {
+
+        return binarySearch(arr , low, high = middle, n);
+
+    }else if (n >= arr[middle]){
+
+        return binarySearch(arr , low = middle , high, n);
+
+    }else {
+        return printf("Hello");
+    }
 
     return 0;
 }
 
-int swap(int x , int y)
+void swap(int *x, int *y)
 {
 
-    int temp = x;
-    x = y;
-    y = temp;
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 
-}
+};
 
 
 
@@ -45,7 +66,7 @@ int main(){
     
 
         memo = (int*)malloc(size * sizeof(int));
-        
+
 
         // Asking the user to type each note
 
@@ -65,14 +86,13 @@ int main(){
 
                 if(memo[k] < memo[k+1]){ // if the first element smaller than the second swap;
 
-                /*
 
-                    int temp = memo[k];
-                    memo[k] = memo[k+1];
-                    memo[k+1] = temp;
+                    //int temp = memo[k];
+                    //memo[k] = memo[k+1];
+                    //memo[k+1] = temp;
 
-                */
-                    swap(memo[k] , memo[k+1]);
+                    swap(&memo[k], &memo[k+1]);
+
 
                 } // semicolon of the if
             } // semicolon of the for
@@ -80,8 +100,20 @@ int main(){
     
     // loop over the sorted array and print it 
         for(int j = 0; j < size; j++){
+
             printf("bubble sort : %d\n" , memo[j]);
+
         }
+
+    // asking the user to type the numbre he wants to know it's index;
+    int n; 
+
+    printf("What number you are searching for ? :");
+
+    scanf("%d", &n);
+    // calling the searching algo function
+
+    binarySearch(memo, 0, 4, n);
 
     }else if(chiox == 2){
 
@@ -123,9 +155,10 @@ int main(){
 
                 if(min != i){
 
-                    int temp = memo[i];
-                    memo[i] = memo[j];
-                    memo[j] = temp;
+
+                    int temp = memo[j-1];
+                    memo[j-1] = memo[min];
+                    memo[min] = temp;
 
                 }
 
@@ -138,6 +171,17 @@ int main(){
         for(int j = 0; j < size; j++){
             printf("selection sort : %d\n" , memo[j]);
         } 
+
+        // asking the user to type the numbre he wants to know it's index;
+        int n; 
+
+        printf("What number you are searching for ? :");
+
+        scanf("%d", &n);
+
+        // calling the searching algo function
+
+        binarySearch(memo, 0, 4, n);
 
     }else if(chiox == 3){  // third mode
 
@@ -188,6 +232,17 @@ int main(){
         for(int j = 0; j < size; j++){
             printf("insertion sort : %d\n" , memo[j]);
         }
+        
+        // asking the user to type the numbre he wants to know it's index;
+        int n; 
+
+        printf("What number you are searching for ? :");
+
+        scanf("%d", &n);
+
+        // calling the searching algo function
+
+        binarySearch(memo, 0, 4, n);
     }
 } // the end of the programm
 
